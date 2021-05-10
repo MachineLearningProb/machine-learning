@@ -2,6 +2,7 @@ Saved model directory.
 
 
 MNIST model without binary analysis:
+
 Epoch 1/20
 1875/1875 [==============================] - 11s 6ms/step - loss: 3.0524 - accuracy: 0.4962
 Epoch 2/20
@@ -47,6 +48,7 @@ Epoch 20/20
 
 
 MNIST model with binary analysis:
+
 Epoch 1/20
 1875/1875 [==============================] - 12s 6ms/step - loss: 0.3506 - accuracy: 0.8168
 Epoch 2/20
