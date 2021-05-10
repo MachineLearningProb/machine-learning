@@ -36,7 +36,8 @@ class model:
             modelA.compile(loss='sparse_categorical_crossentropy', optimizer = 'sgd', metrics=['accuracy'])
             modelA.fit(X_train, Y_train , epochs=200, batch_size=16, verbose=1)
             modelA.save('saved_models/cifar10_1')
-            
+
+
             #model 2
             modelB = Sequential()
             modelB.add(Conv2D(32, kernel_size=(3, 3), activation='relu', input_shape=input_shape))
@@ -108,14 +109,15 @@ class model:
             
 
             (X_train, Y_train),(X_test, Y_test) = mnist.load_data()
-            
+            X_train = X_train.reshape(X_train.shape[0],28,28,1)
+            X_test = X_test.reshape(X_test.shape[0],28,28,1) 
             #model 1
-            model = Sequential()
-            model.add(Conv2D(32,(3,3), activation='relu', input_shape=(28,28,1)))
-            model.add(MaxPooling2D(2,2))
-            model.add(Flatten())
-            model.add(Dense(100,activation='relu'))
-            model.add(Dense(10, activation='softmax'))
+            modelA = Sequential()
+            modelA.add(Conv2D(32,(3,3), activation='relu', input_shape=(28,28,1)))
+            modelA.add(MaxPooling2D(2,2))
+            modelA.add(Flatten())
+            modelA.add(Dense(100,activation='relu'))
+            modelA.add(Dense(10, activation='softmax'))
             #model.compile(loss='binary_crossentropy', optimizer = 'sgd',metrics=['accuracy'])
             #model.fit(X_train,Y_train, epochs=100, batch_size=32,verbose=0)
             #model.save('saved_models/mnist')
@@ -125,12 +127,12 @@ class model:
 
             
             #model 2
-            model = Sequential()
-            model.add(Conv2D(32,(3,3), activation='relu', input_shape=(28,28,1)))
-            model.add(MaxPooling2D(2,2))
-            model.add(Flatten())
-            model.add(Dense(100,activation='relu'))
-            model.add(Dense(10, activation='softmax'))
+            modelB = Sequential()
+            modelB.add(Conv2D(32,(3,3), activation='relu', input_shape=(28,28,1)))
+            modelB.add(MaxPooling2D(2,2))
+            modelB.add(Flatten())
+            modelB.add(Dense(100,activation='relu'))
+            modelB.add(Dense(10, activation='softmax'))
             modelB.compile(loss='binary_crossentropy', optimizer = 'sgd', metrics=['accuracy'])
             modelB.fit(X_train, Y_train , epochs=200, batch_size=16, verbose=1)
             modelB.save('saved_models/MNIST_2')
@@ -139,10 +141,12 @@ class model:
 
 
     def savemodel(self):
+        '''
         model = ['CIFAR10','CIFAR100','MNIST']
         for i in model:
             model = self.CNN(i)
-
+        '''
+        model = self.CNN('MNIST')
 
 
 if __name__=="__main__":
