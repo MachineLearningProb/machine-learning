@@ -10,4 +10,5 @@ Reorgnaize this
 1. Eval.py for evaluation
 2. python binding for all the model
 3. train.py for training and checkpoint 
-4. Working on developing YOLO for kitti analysis
+4. Working on developing YOLO for kitti analysis(YOLO done)(not done debug)
+5. 
