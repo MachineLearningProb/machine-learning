@@ -7,6 +7,7 @@ import random
 import os.path
 from os import path
 import tensorflow as tf
+from yolo import * 
 class model:
     """Training model cifar10, cifar100, and minist  and saves them into folder"""
     def __init__(self):
@@ -41,8 +42,17 @@ class model:
                 modelA.add(Dense(10, activation='softmax'))
                 modelA.compile(loss='sparse_categorical_crossentropy', optimizer = 'sgd', metrics=['accuracy'])
                 modelA.fit(X_train, Y_train , epochs=200, batch_size=8, verbose=1)
-                modelA.save('saved_models/cifar10_1')
+                modelA.save('saved_models/cifar10_1.h5')
 
+            (X_train, Y_train),(X_test, Y_test) = cifar10.load_data()
+            X_trian = X_train.astype('float32')
+            X_test = X_test.astype('float32')
+            img_width, img_height, img_num_channels = 32, 32, 3
+            input_shape = (img_width, img_height, img_num_channels)
+            M_X_train = X_train
+            M_Y_train = Y_train
+            
+            X_train = X_train/255
 
             #model 2
             if not(path.exists('saved_models/cifar10_2.h5')) or self.flag:
@@ -59,8 +69,8 @@ class model:
                 modelB.add(Dense(128, activation='relu'))
                 modelB.add(Dense(10, activation='softmax'))
                 modelB.compile(loss='binary_crossentropy', optimizer = 'sgd', metrics=['accuracy'])
-                modelB.fit(M_X_train, M_Y_train , epochs=200, batch_size=8, verbose=1)
-                modelB.save('saved_models/cifar10_2')
+                modelB.fit(M_X_train, M_Y_train , epochs=50, batch_size=8, verbose=1)
+                modelB.save('saved_models/cifar10_2.h5')
 
         elif model=="CIFAR100":
             (X_train, Y_train),(X_test, Y_test) = cifar10.load_data()
@@ -70,6 +80,7 @@ class model:
             input_shape = (img_width, img_height, img_num_channels)
             M_X_train = X_train
             M_Y_train = Y_train
+            print(M_X_train.shape, M_Y_train.shape)
             
     
 
@@ -89,12 +100,25 @@ class model:
                 modelA.add(Dense(128, activation='relu'))
                 modelA.add(Dense(100, activation='softmax'))
                 modelA.compile(loss='sparse_categorical_crossentropy', optimizer = 'sgd', metrics=['accuracy'])
-                modelA.fit(X_train, Y_train , epochs=200, batch_size=16, verbose=1)
+                modelA.fit(X_train, Y_train , epochs=50, batch_size=16, verbose=1)
                 modelA.save('saved_models/cifar100_1.h5')
 
             
             #return model
             #model.save('saved_models/cifar10_3')
+            (X_train, Y_train),(X_test, Y_test) = cifar10.load_data()
+            X_trian = X_train.astype('float32')
+            X_test = X_test.astype('float32')
+            img_width, img_height, img_num_channels = 32, 32, 3
+            input_shape = (img_width, img_height, img_num_channels)
+            M_X_train = X_train
+            M_Y_train = Y_train
+            print(M_X_train.shape, M_Y_train.shape)
+
+
+
+            X_train = X_train/255
+
             
             #model 2
             if not(path.exists("saved_models/cifar10_2.h5")) or self.flag:
@@ -144,6 +168,12 @@ class model:
                 
 
 
+            (X_train, Y_train),(X_test, Y_test) = mnist.load_data()
+            X_train = X_train.reshape(X_train.shape[0],28,28,1)
+            X_test = X_test.reshape(X_test.shape[0],28,28,1)
+            M_X_train = X_train
+            M_Y_train = Y_train
+
             
             #model 2
             if not(path.exists("saved_models/MNIST_2.h5")) or self.flag:
@@ -157,17 +187,20 @@ class model:
                 modelB.compile(loss='binary_crossentropy', optimizer = 'sgd', metrics=['accuracy'])
                 modelB.fit(M_X_train, M_Y_train , epochs=20, batch_size=32, verbose=1)
                 modelB.save('saved_models/MNIST_2.h5')
+        
+        elif model=="YOLO":
+            return 0
+            
+
 
 
 
 
     def savemodel(self):
-        '''
         model = ['CIFAR10','CIFAR100','MNIST']
         for i in model:
             model = self.CNN(i)
-        '''
-        model = self.CNN('CIFAR10')
+        #model = self.CNN()
 
     def binary_data(self, Y_train):
         array = []
