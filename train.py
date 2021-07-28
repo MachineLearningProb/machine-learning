@@ -28,7 +28,7 @@ class model:
             X_train = X_train/255
             
             #model 1
-            if not(path.exists('saved_models/cifar10_1')) or self.flag:
+            if not(path.exists('saved_models/cifar10_1.h5')) or self.flag:
                 modelA = Sequential()
                 modelA.add(Conv2D(32, kernel_size=(3, 3), activation='relu', input_shape=input_shape))
                 modelA.add(MaxPooling2D(pool_size=(2, 2)))
@@ -87,7 +87,7 @@ class model:
             X_train = X_train/255
 
             #model 1
-            if not(path.exists('saved_models/cifar100_2.h5')) or self.flag:
+            if not(path.exists('saved_models/cifar100_1.h5')) or self.flag:
                 modelA = Sequential()
                 modelA.add(Conv2D(32, kernel_size=(3, 3), activation='relu', input_shape=input_shape))
                 modelA.add(MaxPooling2D(pool_size=(2, 2)))
