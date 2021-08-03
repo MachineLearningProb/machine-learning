@@ -1,13 +1,14 @@
 import matplotlib.pyplot as plt
 import numpy as np
-from keras.layers import Dense, Conv2D, MaxPooling2D, Flatten
-from keras.models import Sequential
-from keras.datasets import mnist, cifar10, cifar100
+from tensorflow.keras import *
+from tensorflow.keras.layers import Dense, Conv2D, MaxPooling2D, Flatten
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.datasets import mnist, cifar10, cifar100
 import random
 import os.path
 from os import path
 import tensorflow as tf
-from yolo import * 
+#from yolo import * 
 class model:
     """Training model cifar10, cifar100, and minist  and saves them into folder"""
     def __init__(self):
