@@ -1,4 +1,4 @@
-# Design and Evaluation of Object Classifiers forProbabilistic Decision-Making in AutonomousSystems
+
 
 The two folders contain the code of uncertainty evaluation and task-based network parts.
 
