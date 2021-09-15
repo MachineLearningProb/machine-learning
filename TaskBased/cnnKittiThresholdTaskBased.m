@@ -6,11 +6,10 @@ close all;
 
 train_images = [];
 train_labels = [];
-root_dir = 'D:/data_object_image_2';
-data_set = 'training';
-cam = 2; % 2 = left color camera
-pedresize_dir = fullfile(root_dir,[data_set '/pedresize_' num2str(cam)]);
-other_dir = fullfile(root_dir,[data_set '/other_' num2str(cam)]);
+root_dir = './';
+
+pedresize_dir = fullfile(root_dir, '/ped');
+other_dir = fullfile(root_dir,'/non-ped');
 
 
 
