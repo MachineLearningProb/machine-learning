@@ -9,10 +9,9 @@ The two folders contain the code of uncertainty evaluation and task-based networ
 , train_CNN_MNIST.m, train_resNet_CIFAR10.mat and train_resNet_MNIST.mat.
 
 ## TaskBased Network
-1. Before run the code, please download the KITTI dataset from http://www.cvlibs.net/datasets/kitti/eval_object.php?obj_benchmark.
-2. Proprocessing the data with proprocessing.m
-3. To train the task-based network with different level of treshold, run cnnKittiThresholdTaskBased.m.
-4. To train the ordinary probabilistic classification network, run cnnKittiThresholdProbabilisticClassification.m
-5. To do the comparison between two networks, run comparisonTaskBasedAndProbabilisticClassification.m
+1. Before run the code, unzip the data ped.zip and non-ped.zip with code insame folder which include the training and test images cropped from KITTI dataset.
+2. To train the task-based network with different level of treshold, run cnnKittiThresholdTaskBased.m.
+3. To train the ordinary probabilistic classification network, run cnnKittiThresholdProbabilisticClassification.m
+4. To do the comparison between two networks, run comparisonTaskBasedAndProbabilisticClassification.m
 
 
